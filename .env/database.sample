@@ -1,0 +1,11 @@
+POSTGRES_USERNAME=postgres
+POSTGRES_PASSWORD=123
+POSTGRES_HOST=db
+POSTGRES_PORT=5432
+POSTGRES_DBNAME=shopper-ia
+POSTGRES_CONNECTION_STRING="postgres://${POSTGRES_USERNAME}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DBNAME}";
+
+# This optional variable can be used to control the auth-method for host
+# connections for all databases, all users, and all addresses.
+# Change to "trust" only in the development environment
+POSTGRES_HOST_AUTH_METHOD=trust

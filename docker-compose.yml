@@ -1,0 +1,33 @@
+services:
+  shopper:
+    container_name: shopper-ia
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /home/node/app
+    command: npm run dev
+    volumes:
+      - .:/home/node/app
+    env_file:
+      - .env/app
+      - .env/database
+    ports:
+      - 3000:3000
+    networks:
+      - my_network
+    depends_on:
+      - db
+  db:
+    image: postgres:16-alpine
+    restart: always
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+    env_file:
+      - .env/database
+    networks:
+      - my_network
+    ports:
+      - 5432:5432
+networks:
+  my_network:
+    driver: bridge
